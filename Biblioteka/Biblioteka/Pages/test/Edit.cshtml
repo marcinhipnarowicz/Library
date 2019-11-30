@@ -1,0 +1,126 @@
+﻿@page
+@model Biblioteka.Pages.test.EditModel
+
+@{
+    ViewData["Title"] = "Edytuj";
+}
+
+<h2 class="text-info">Edytowanie książki</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Book.Id" />
+            <input type="hidden" asp-for="Book.IdUser" />
+            <div class="form-group col-md-12 offset-sm-1">
+                <label asp-for="Book.Title" class="control-label"></label>
+                <input asp-for="Book.Title" class="form-control" />
+                <span asp-validation-for="Book.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.Name" class="control-label"></label>
+                <input asp-for="Book.Name" class="form-control" />
+                <span asp-validation-for="Book.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.Surname" class="control-label"></label>
+                <input asp-for="Book.Surname" class="form-control" />
+                <span asp-validation-for="Book.Surname" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.Category" class="control-label"></label>
+                <select asp-for="Book.Category" class="form-control">
+                    <option selected="selected"></option>
+                    <option>Kryminał</option>
+                    <option>Komedia</option>
+                    <option>Horror</option>
+                    <option>Fantasy</option>
+                    <option>Dla dzieci</option>
+                    <option>Przygodowa</option>
+                    <option>Dramat</option>
+                    <option>Biografia</option>
+                    <option>Historyczna</option>
+                    <option>Poezja</option>
+                    <option>Romans</option>
+                    <option>Naukowa</option>
+                    <option>Mit</option>
+                    <option>Sonet</option>
+                    <option>Pamiętnik</option>
+                    <option>Komiks</option>
+                    <option>Inne</option>
+                </select>
+                <span asp-validation-for="Book.Category" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.ISBN" class="control-label"></label>
+                <input asp-for="Book.ISBN" class="form-control" />
+                <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Book.YearPublic" class="control-label"></label>
+                <input asp-for="Book.YearPublic" class="form-control" />
+                <span asp-validation-for="Book.YearPublic" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.Page" class="control-label"></label>
+                <input asp-for="Book.Page" class="form-control" />
+                <span asp-validation-for="Book.Page" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.Tom" class="control-label"></label>
+                <input asp-for="Book.Tom" class="form-control" />
+                <span asp-validation-for="Book.Tom" class="text-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="Book.DateOfReading" class="control-label"></label>
+                <input type="date" asp-for="Book.DateOfReading" class="form-control" />
+                <span asp-validation-for="Book.DateOfReading" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.ItWasRead" class="control-label"></label>
+                <input type="checkbox" asp-for="Book.ItWasRead" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Book.OwnershipStatus" class="control-label"></label>
+                <select asp-for="Book.OwnershipStatus" class="form-control">
+                    <option selected="selected"></option>
+                    <option>Posiadam</option>
+                    <option>Chcę zakupić</option>
+                    <option>Pożyczona</option>
+                </select>
+                <span asp-validation-for="Book.OwnershipStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group col-sm-6">
+                <label asp-for="Book.Summary" class="control-label"></label>
+                <textarea asp-for="Book.Summary" class="form-control "></textarea>
+                <span asp-validation-for="Book.Summary" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group col-sm-6">
+                    <label asp-for="Book.Image"></label>
+                    <input type="file" name="Image2" id="Image2">
+                </div>
+            </div>
+            <br /> <br />
+            <div class="form-group col-sm-12">
+                <div class="row">
+                    <div class="col-sm-2 offset-sm-2">
+                        <input type="submit" value="Zapisz" class="btn btn-primary form-control" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-page="./Index">Wróc do listy</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

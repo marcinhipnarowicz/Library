@@ -1,0 +1,94 @@
+﻿@page
+@model Biblioteka.Pages.test.DeleteModel
+
+@{
+    ViewData["Title"] = "Usuwanie książki";
+}
+
+<h2 class="text-info">Usuwanie książki</h2>
+<br />
+<h3>Czy na pewno chcesz to zrobić?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Surname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Surname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.ISBN)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.ISBN)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.YearPublic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.YearPublic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Page)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Page)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Tom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Tom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Summary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Summary)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.DateOfReading)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.DateOfReading)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.ItWasRead)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.ItWasRead)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.OwnershipStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.OwnershipStatus)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Book.Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" onclick="return confirm('Czy chcesz usunąć książkę?')" />
+        <br /><br />
+        <a asp-page="./Index">Wróć do listy</a>
+    </form>
+</div>

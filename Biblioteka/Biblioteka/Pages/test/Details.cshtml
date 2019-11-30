@@ -1,0 +1,200 @@
+﻿@page
+@model Biblioteka.Pages.test.DetailsModel
+
+@{
+    ViewData["Title"] = "Szcegóły";
+}
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<h2 class="text-info">Szczegóły książki</h2>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        @if (Model.Book.Image == null)
+        {
+            <div class="col-md-12">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Title)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Title)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Surname)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Surname)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Category)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Category)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.ISBN)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.ISBN)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.YearPublic)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.YearPublic)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Page)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Page)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Tom)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Tom)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Summary)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Summary)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.DateOfReading)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.DateOfReading)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.ItWasRead)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.ItWasRead)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.OwnershipStatus)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.OwnershipStatus)
+                    </dd>
+                </dl>
+            </div>
+        }
+        else
+        {
+            <div class="col-md-3 ">
+                @if (Model.Book.Image != null)
+                {
+                    <img class="img-responsive full-width" src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Book.Image)" />
+                }
+            </div>
+            <div class="col-md-9">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Title)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Title)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Name)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Name)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Surname)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Surname)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Category)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Category)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.ISBN)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.ISBN)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.YearPublic)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.YearPublic)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Page)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Page)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Tom)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Tom)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.Summary)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.Summary)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.DateOfReading)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.DateOfReading)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.ItWasRead)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.ItWasRead)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Book.OwnershipStatus)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Book.OwnershipStatus)
+                    </dd>
+                </dl>
+            </div>
+        }
+    </div>
+</div>
+<div>
+    @if (Model.Idpom == null)
+    {
+
+    }
+    else if (Model.Idpom == Model.Book.IdUser)
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Book.Id" class="btn btn-success btn-sm">Edytuj</a>
+        <br /><br />
+        <a asp-page="./Index">Wróć do listy</a>
+    }
+    else
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Book.Id" class="btn btn-success btn-sm">Dodaj</a>
+        <br /><br />
+        <a asp-page="./Index">Wróć do listy</a>
+    }
+
+</div>

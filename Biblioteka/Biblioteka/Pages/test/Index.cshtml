@@ -1,0 +1,97 @@
+﻿@page
+@model Biblioteka.Pages.test.IndexModel
+
+@{
+    ViewData["Title"] = "Lista książek";
+}
+
+<br />
+<div class="container row">
+    <div class="col-md-6">
+        <h2 class="text-info">Lista książek</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <a asp-page="/test/Create" class="btn btn-primary">Dodaj książkę</a>
+    </div>
+</div>
+<br />
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Wyszukaj:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Szukaj" class="btn btn-default" /> |
+            <a asp-page="./Index">Pełna lista książek</a>
+        </p>
+    </div>
+</form>
+
+@if (Model.Message != null)
+{
+<div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    @Model.Message
+</div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TitleSort">
+                    @Html.DisplayNameFor(model => model.Book[0].Title)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Book[0].Name)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.SurnameSort">
+                    @Html.DisplayNameFor(model => model.Book[0].Surname)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CategorySort">
+                    @Html.DisplayNameFor(model => model.Book[0].Category)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.ISBNSort">
+                    @Html.DisplayNameFor(model => model.Book[0].ISBN)
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserBooks)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISBN)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-default btn-sm">Szczegóły</a>
+                <a asp-page="./Edit" asp-route-id="@item.Id" asp-route-userID="@item.IdUser" class="btn btn-success btn-sm">Edytuj</a>
+                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Usuń</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
